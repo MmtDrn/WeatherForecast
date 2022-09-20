@@ -14,6 +14,7 @@ final class CitiesVC: UIViewController {
     
     private var jsonData = [JsonData]()
     private var searchingJsonData = [JsonData]()
+    private var userDefaultCities = [UserDefaultsModel]()
     private var searching = false
 
     override func viewDidLoad() {
@@ -21,24 +22,48 @@ final class CitiesVC: UIViewController {
         
         configView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserdefaults()
+    }
 }
 
 // MARK: Fav Button&Funcs
 extension CitiesVC:CitiesProtocol {
     
     func addToFav(indexPath: IndexPath) {
-        
+      
         if searching{
             let city = searchingJsonData[indexPath.row]
-            CoreDataServices().saveCity(city: city)
-          
+
+            let citie = UserDefaultsModel(id: city.id!, name: city.name!, state: city.state!, country: city.country!, coord: city.coord!)
+            self.userDefaultCities.append(citie)
+            UserDefaultsServices.userdefaultAdd(userDefaultCities: self.userDefaultCities)
+
         }else{
             let city = (jsonData[indexPath.row])
-            CoreDataServices().saveCity(city: city)
+
+            let citie = UserDefaultsModel(id: city.id!, name: city.name!, state: city.state!, country: city.country!, coord: city.coord!)
+            self.userDefaultCities.append(citie)
+            UserDefaultsServices.userdefaultAdd(userDefaultCities: self.userDefaultCities)
         }
     }
     
     func deletefFromFav(indexPath: IndexPath) {
+        
+        print("delete")
+        
+    }
+    
+    private func fetchUserdefaults(){
+        
+        UserDefaultsServices.userdefaultFetch { userdefaultCities in
+            self.userDefaultCities = userdefaultCities
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     private func configView() {
@@ -74,10 +99,24 @@ extension CitiesVC:UITableViewDelegate,UITableViewDataSource{
         
         if searching{
             let city = searchingJsonData[indexPath.row]
-            cell.config(city: city)
+            var ids = [Int]()
+            for citie in self.userDefaultCities {
+                ids.append(citie.id)
+            }
+            if ids.contains(city.id!) {
+                cell.configFav(city: city)
+            }
         }else{
             let city = jsonData[indexPath.row]
             cell.config(city: city)
+            
+            var ids = [Int]()
+            for citie in self.userDefaultCities {
+                ids.append(citie.id)
+            }
+            if ids.contains(city.id!) {
+                cell.config(city: city)
+            }
         }
    
         cell.citiesProtocol = self

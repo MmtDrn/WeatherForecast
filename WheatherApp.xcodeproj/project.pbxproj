@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50538BE28D76A990055E1E6 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50538BD28D76A990055E1E6 /* UserDefaultsModel.swift */; };
+		B506EF6628D9ADC80091D305 /* UserDefaultsManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B506EF6528D9ADC80091D305 /* UserDefaultsManagers.swift */; };
 		FA0DCD53281704B600C4F9B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DCD52281704B600C4F9B5 /* AppDelegate.swift */; };
 		FA0DCD55281704B600C4F9B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DCD54281704B600C4F9B5 /* SceneDelegate.swift */; };
 		FA0DCD57281704B600C4F9B5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DCD56281704B600C4F9B5 /* HomeVC.swift */; };
@@ -33,7 +35,6 @@
 		FA3A97DE28995AE30023DA71 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A97DA28995AE30023DA71 /* LocationView.swift */; };
 		FA3A97DF28995AE30023DA71 /* LocationManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A97DB28995AE30023DA71 /* LocationManagers.swift */; };
 		FA3AC1F62817D24400250885 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3AC1F52817D24400250885 /* JsonData.swift */; };
-		FA41F399289BCC6B007E6A10 /* CoreDataManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41F398289BCC6B007E6A10 /* CoreDataManagers.swift */; };
 		FA57122A28193B16000DCD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB26997281874EC00497905 /* CoreLocation.framework */; };
 		FA77167B289BB9AA006DA152 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA77167A289BB9AA006DA152 /* AlamofireImage */; };
 		FA88466A281841CB00BD2611 /* CitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA884669281841CB00BD2611 /* CitiesTableViewCell.swift */; };
@@ -41,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50538BD28D76A990055E1E6 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
+		B506EF6528D9ADC80091D305 /* UserDefaultsManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagers.swift; sourceTree = "<group>"; };
 		FA0DCD4F281704B600C4F9B5 /* WheatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0DCD52281704B600C4F9B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA0DCD54281704B600C4F9B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +71,6 @@
 		FA3A97DA28995AE30023DA71 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		FA3A97DB28995AE30023DA71 /* LocationManagers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagers.swift; sourceTree = "<group>"; };
 		FA3AC1F52817D24400250885 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
-		FA41F398289BCC6B007E6A10 /* CoreDataManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagers.swift; sourceTree = "<group>"; };
 		FA884669281841CB00BD2611 /* CitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewCell.swift; sourceTree = "<group>"; };
 		FA88466B2818426700BD2611 /* CitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesVC.swift; sourceTree = "<group>"; };
 		FAB26997281874EC00497905 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -112,8 +114,8 @@
 				FA0DCD8328171CE300C4F9B5 /* View */,
 				FA0DCD8428171CFD00C4F9B5 /* Cells */,
 				FA0DCD7C28170E7100C4F9B5 /* Managers */,
-				FA0DCD63281704B700C4F9B5 /* Info.plist */,
 				FA7CBD42281A06D100A15FCB /* Resources */,
+				FA0DCD63281704B700C4F9B5 /* Info.plist */,
 			);
 			path = WheatherApp;
 			sourceTree = "<group>";
@@ -130,6 +132,7 @@
 				FA0DCD7228170E4700C4F9B5 /* Current.swift */,
 				FA0DCD7328170E4700C4F9B5 /* Hourly.swift */,
 				FA3AC1F52817D24400250885 /* JsonData.swift */,
+				B50538BD28D76A990055E1E6 /* UserDefaultsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,7 +142,7 @@
 			children = (
 				FA3A97DB28995AE30023DA71 /* LocationManagers.swift */,
 				FA0DCD7D28170E7100C4F9B5 /* NetworkManagers.swift */,
-				FA41F398289BCC6B007E6A10 /* CoreDataManagers.swift */,
+				B506EF6528D9ADC80091D305 /* UserDefaultsManagers.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -276,13 +279,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0DCD7528170E4700C4F9B5 /* WeatherInfo.swift in Sources */,
-				FA41F399289BCC6B007E6A10 /* CoreDataManagers.swift in Sources */,
 				FA3A97DE28995AE30023DA71 /* LocationView.swift in Sources */,
 				FA0DCD7628170E4700C4F9B5 /* Daily.swift in Sources */,
 				FA3A97DF28995AE30023DA71 /* LocationManagers.swift in Sources */,
 				FA0DCD57281704B600C4F9B5 /* HomeVC.swift in Sources */,
 				FA3AC1F62817D24400250885 /* JsonData.swift in Sources */,
 				FA0DCD82281719FB00C4F9B5 /* HourlyCollectionViewCell.swift in Sources */,
+				B506EF6628D9ADC80091D305 /* UserDefaultsManagers.swift in Sources */,
+				B50538BE28D76A990055E1E6 /* UserDefaultsModel.swift in Sources */,
 				FA0DCD7A28170E4700C4F9B5 /* Current.swift in Sources */,
 				FA0DCD7728170E4700C4F9B5 /* HourlyResponse.swift in Sources */,
 				FA0DCD7828170E4700C4F9B5 /* CurrentResponse.swift in Sources */,

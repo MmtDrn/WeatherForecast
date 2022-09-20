@@ -31,6 +31,13 @@ class CitiesTableViewCell: UITableViewCell {
     }
     
     func config(city:JsonData) {
+        buttonOutlet.setImage(UIImage(systemName: "star"), for: .normal)
+        labelCountry.text = "Ülke: \(city.country!)"
+        labelCity.text = "Şehir: \(city.name!)"
+    }
+    
+    func configFav(city:JsonData) {
+        buttonOutlet.setImage(UIImage(systemName: "star.fill"), for: .normal)
         labelCountry.text = "Ülke: \(city.country!)"
         labelCity.text = "Şehir: \(city.name!)"
     }

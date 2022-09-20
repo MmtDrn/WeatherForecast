@@ -33,7 +33,6 @@ final class HomeVC: UIViewController {
         getData()
         setupCurrent()
         configView()
-        
     }
     
     @objc func citiesVC() {

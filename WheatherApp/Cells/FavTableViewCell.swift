@@ -26,10 +26,10 @@ class FavTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func config(city:JsonCities, weather:Current) {
+    func config(city:UserDefaultsModel, weather:Current) {
         
         
-        cityNameLabel.text = city.name?.capitalized
+        cityNameLabel.text = city.name.capitalized
         degreesLabel.text = String(format: "%0.0f°",weather.temp!)
         weatherDescp.text = weather.weather![0].description!.capitalized
         

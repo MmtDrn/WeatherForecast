@@ -9,12 +9,12 @@ import UIKit
 
 final class FavVC: UIViewController {
     
-    let context = appDelegate.persistentContainer.viewContext
-    
     @IBOutlet weak var favCitiesTableView: UITableView!
     
     var cities = [JsonCities]()
     var currentWeather = [Current]()
+    private var userDefaultCities = [UserDefaultsModel]()
+    private var userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +25,22 @@ final class FavVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        fetchCoreData()
-        fetchWeatherData()
+        DispatchQueue.main.async {
+            self.fetchUserdefaults()
+            self.fetchWeatherData()
+        }
+        
     }
-    
 }
 
 // MARK: Funcs
 extension FavVC {
     
-    
-    
-    private func fetchCoreData() {
+    private func fetchUserdefaults(){
         
-        CoreDataServices().fetchCoreData { jsonCities in
+        UserDefaultsServices.userdefaultFetch { userdefaultCities in
             
-            self.cities = jsonCities
-            
+            self.userDefaultCities = userdefaultCities
             DispatchQueue.main.async {
                 self.favCitiesTableView.reloadData()
             }
@@ -50,8 +49,8 @@ extension FavVC {
     
     private func fetchWeatherData(){
         
-        for city in cities {
-            WebService.getCurrentWeather(lat: city.lat!, lon: city.long!) { current in
+        for city in userDefaultCities {
+            WebService.getCurrentWeather(lat: city.coord.lat!.debugDescription, lon: city.coord.lon!.debugDescription) { current in
                 guard let current = current else { return }
                 self.currentWeather.append(current)
             }
@@ -65,11 +64,11 @@ extension FavVC:UITableViewDelegate,UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return userDefaultCities.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let city = cities[indexPath.row]
+        let city = userDefaultCities[indexPath.row]
         let weather = currentWeather[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! FavTableViewCell
@@ -78,14 +77,13 @@ extension FavVC:UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let city = cities[indexPath.row]
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: "Sil"){ [self]
+        let deleteAction = UIContextualAction(style: .destructive, title: "Sil"){ [weak self]
             (contextualAction, view, boolValue) in
             
-            CoreDataServices().deleteCity(city: city)
-            fetchCoreData()
+            guard let self = self else { return }
+            self.userDefaultCities.remove(at: indexPath.row)
+            UserDefaultsServices.userdefaultAdd(userDefaultCities: self.userDefaultCities)
+            self.fetchUserdefaults()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
