@@ -1,2 +1,4 @@
 # WeatherForecast
 MVVM, Alamofire, Rest-Api
+
+<img width="180" alt="Ekran Resmi 2022-09-20 17 24 00" src="https://user-images.githubusercontent.com/93058080/191284732-36320c18-362c-4d9d-bef4-e53bfb1350ee.png">, <img width="180" alt="Ekran Resmi 2022-09-20 17 24 19" src="https://user-images.githubusercontent.com/93058080/191284762-9881338d-369c-4d41-aa3f-3ace365a01c1.png">, <img width="180" alt="Ekran Resmi 2022-09-20 17 26 09" src="https://user-images.githubusercontent.com/93058080/191284773-d1799662-1a54-4ad0-abb7-6cc729072fdf.png">, <img width="180" alt="Ekran Resmi 2022-09-20 17 26 29" src="https://user-images.githubusercontent.com/93058080/191284781-1c9efa5a-0da7-47c5-b4fd-9c2283d77c70.png">, <img width="180" alt="Ekran Resmi 2022-09-20 17 26 37" src="https://user-images.githubusercontent.com/93058080/191284789-e0229e65-3817-4a68-9293-7c8428647600.png">
